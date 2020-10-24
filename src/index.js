@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/app/app";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app/app';
 
 const Settings = {
   ERRORS_COUNT: 3
@@ -8,7 +8,7 @@ const Settings = {
 
 ReactDOM.render(
     <App
-      errorCount = {Settings.ERRORS_COUNT}
+      maxErrorsCount={Settings.ERRORS_COUNT}
     />,
     document.getElementById(`root`)
 );

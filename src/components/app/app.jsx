@@ -1,17 +1,16 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import WelcomeScreen from "../welcome-screen/welcome-screen";
+import WelcomeScreen from '../welcome-screen/welcome-screen';
 
 const App = (props) => {
-  const {errorCount} = props;
+  const {maxErrorsCount} = props;
   return <React.Fragment>
-    <WelcomeScreen errorCount={errorCount}/>
+    <WelcomeScreen maxErrorsCount={maxErrorsCount}/>
   </React.Fragment>;
 };
 
 App.propTypes = {
-  errorCount: PropTypes.number.isRequired
+  maxErrorsCount: PropTypes.number.isRequired
 };
 
 export default App;
