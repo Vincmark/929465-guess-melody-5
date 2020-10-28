@@ -10,9 +10,6 @@ import GenreQuestionScreen from "../genre-question-screen/genre-question-screen"
 
 const App = (props) => {
   const {maxErrorsCount} = props;
-  // return <React.Fragment>
-  //   <WelcomeScreen maxErrorsCount={maxErrorsCount}/>
-  // </React.Fragment>;
   return (
     <BrowserRouter>
       <Switch>
@@ -49,7 +46,6 @@ const App = (props) => {
       </Switch>
     </BrowserRouter>
   );
-
 };
 
 App.propTypes = {
