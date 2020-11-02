@@ -7,15 +7,22 @@ import GameOverScreen from '../game-over-screen/game-over-screen';
 import ResultScreen from '../result-screen/result-screen';
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
+import GameScreen from "../game-screen/game-screen";
 
 const App = (props) => {
-  const {maxErrorsCount} = props;
+  const {maxErrorsCount, questions} = props;
+  const {firstQuestion, secondQuestion} = questions;
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
-          <WelcomeScreen maxErrorsCount={maxErrorsCount}/>
-        </Route>
+        <Route path="/" exact
+          render={({history}) => (
+            <WelcomeScreen
+              maxErrorsCount={maxErrorsCount}
+              onPlayButtonClick={history.push(`/game`)}
+            />
+          )}
+        />
         <Route path="/login" exact>
           <SignInScreen/>
         </Route>
@@ -26,10 +33,22 @@ const App = (props) => {
           <GameOverScreen/>
         </Route>
         <Route path="/dev-artist" exact>
-          <ArtistQuestionScreen/>
+          <ArtistQuestionScreen
+            question={firstQuestion}
+            onAnswer={() => {}}
+          />
         </Route>
         <Route path="/dev-genre" exact>
-          <GenreQuestionScreen/>
+          <GenreQuestionScreen
+            question={secondQuestion}
+            onAnswer={() => {}}
+          />
+        </Route>
+        <Route path="/game" exact>
+          <GameScreen
+            questions={questions}
+            maxErrorsCount={maxErrorsCount}
+          />
         </Route>
         <Route
           render={() => (
@@ -49,7 +68,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  maxErrorsCount: PropTypes.number.isRequired
+  maxErrorsCount: PropTypes.number.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 export default App;
